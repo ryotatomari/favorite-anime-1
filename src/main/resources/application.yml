@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:53306/hellospring
+    username: develop
+    password: develop
