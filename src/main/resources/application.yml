@@ -4,3 +4,6 @@ spring:
     url: jdbc:mysql://localhost:53306/hellospring
     username: develop
     password: develop
+  sql:
+    init:
+      mode: always
