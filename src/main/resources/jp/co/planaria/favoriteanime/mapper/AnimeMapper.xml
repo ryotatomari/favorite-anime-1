@@ -6,4 +6,21 @@
   <select id="selectAll" resultType="jp.co.planaria.favoriteanime.entity.Anime">
     select * from anime
   </select>
+
+  <select id="selectByCondition" resultType="jp.co.planaria.favoriteanime.entity.Anime">
+	SELECT
+	    title_no
+	    , title
+	    , memo 
+	FROM
+	    anime 
+	<where>
+        <if test="title != null">
+	    title LIKE CONCAT(#{title}, '%')
+		</if>
+	</where>
+	ORDER BY
+	    title_no desc
+  </select>
+
 </mapper>

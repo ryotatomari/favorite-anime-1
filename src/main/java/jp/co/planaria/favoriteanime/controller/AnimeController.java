@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import jp.co.planaria.favoriteanime.entity.Anime;
+import jp.co.planaria.favoriteanime.entity.AnimeCondition;
 import jp.co.planaria.favoriteanime.service.AnimeService;
 
 /**
@@ -24,13 +25,14 @@ public class AnimeController {
 	@RequestMapping("/list")
 	public String list(Model model) {
 		List<Anime> animes = service.getAnimeList(); //検索
-//		
-//		Anime tensura = new Anime(1, "転すら", "すらいむ");
-//		Anime kimetsu = new Anime(2, "キメツのやいば", "鬼出る");
-//		
-//		animes.add(tensura);
-//		animes.add(kimetsu);
+		model.addAttribute("animes", animes); //thymeleafに渡す
 		
+		return "list";
+	}
+
+	@RequestMapping("/search")
+	public String search(AnimeCondition condition, Model model) {
+		List<Anime> animes = service.searchAnimeListByCondition(condition); //検索
 		model.addAttribute("animes", animes); //thymeleafに渡す
 		
 		return "list";
